@@ -1,0 +1,32 @@
+<h4>Category form</h4>
+
+<div class="row">
+  <div class="col s12">
+    <button class="btn red" type="button" (click)="delete()">Delete</button>
+  </div>
+</div>
+
+<div class="row">
+  <form class="col s12" (ngSubmit)="submit()" [formGroup]="form">
+
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="email" type="text" class="validate" formControlName="name">
+        <label for="email">Name</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <img [src]="imagePreview" *ngIf="imagePreview" height="200px">
+        <br>
+        <br>
+        <input type="file" style="display: none" #uploadForm (change)="upploadImage($event)">
+        <button class="btn orange" type="button" (click)="showUploadForm()">Upload</button>
+      </div>
+    </div>
+
+    <button class="btn blue" type="submit">Submit</button>
+
+  </form>
+</div>

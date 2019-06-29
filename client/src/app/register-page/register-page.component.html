@@ -1,0 +1,29 @@
+<h4>Register page</h4>
+
+<div class="row">
+  <form class="col s6 offset-s3" [formGroup]="form" (ngSubmit)="submit()">
+
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="email" type="email" class="validate" formControlName="email">
+        <label for="email">Email</label>
+        <span *ngIf="form.get('email').touched && form.get('email').invalid">
+          <span *ngIf="form.get('email').errors['required']">Field required</span>
+          <span *ngIf="form.get('email').errors['email']">Wrong e-mail format</span>
+        </span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="password" type="password" class="validate" formControlName="password">
+        <label for="password">Password</label>
+        <span *ngIf="form.get('password').touched && form.get('password').invalid">
+          <span *ngIf="form.get('password').errors['required']">Field required</span>
+          <span *ngIf="form.get('password').errors['minlength']">Min length should be</span>
+        </span>
+      </div>
+    </div>
+    <button class="btn btn_full blue" type="submit" [disabled]="form.invalid || form.disabled">Register</button>
+  </form>
+</div>
